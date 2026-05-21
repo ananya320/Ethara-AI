@@ -2,7 +2,7 @@ const mongoose = require("mongoose")
 
 const taskSchema = new mongoose.Schema({
   title: { type: String, required: true },
-  description: String,
+  description: { type: String },
   status: {
     type: String,
     enum: ["todo", "in-progress", "done"],
@@ -13,18 +13,18 @@ const taskSchema = new mongoose.Schema({
     enum: ["low", "medium", "high"],
     default: "medium"
   },
-  project: { 
-    type: mongoose.Schema.Types.ObjectId, 
-    ref: "Project", 
-    required: true 
+  project: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Project",
+    required: true
   },
-  assignedTo: { 
-    type: mongoose.Schema.Types.ObjectId, 
-    ref: "User" 
+  assignedTo: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User"
   },
-  createdBy: { 
-    type: mongoose.Schema.Types.ObjectId, 
-    ref: "User" 
+  createdBy: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User"
   },
   dueDate: { type: Date }
 }, { timestamps: true })
